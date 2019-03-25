@@ -1,0 +1,20 @@
+{
+  "name": "toolbox",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:xuxusheng/toolbox.git",
+  "author": "xuxusheng <20691718@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p ./"
+  },
+  "dependencies": {
+    "prettier": "^1.16.4",
+    "shelljs": "^0.8.3"
+  },
+  "devDependencies": {
+    "@types/shelljs": "^0.8.3",
+    "tslint": "^5.14.0",
+    "typescript": "^3.3.4000"
+  }
+}
