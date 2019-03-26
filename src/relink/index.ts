@@ -15,7 +15,7 @@ function format(str: string) {
 }
 
 (() => {
-  let r = exec("ifconfig");
+  let r = exec("/sbin/ifconfig");
 
   if (r.code !== 0) {
     // ifconfig 命令出错
