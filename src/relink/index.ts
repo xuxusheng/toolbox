@@ -10,8 +10,8 @@ exec(`mkdir -p ${logDir}`);
 const resultLog = join(homedir(), "./log/relink/result.log");
 const errorLog = join(homedir(), "./log/relink/error.log");
 
-function format(str: string) {
-  return new Date() + " --- " + str + "\n";
+function log(file: string, msg: string) {
+  appendFileSync(file, `${new Date()} --- ${msg}\n`);
 }
 
 (() => {
@@ -19,13 +19,13 @@ function format(str: string) {
 
   if (r.code !== 0) {
     // ifconfig 命令出错
-    appendFileSync(errorLog, format("ifconfig 出错：" + r.stderr));
+    log(errorLog, "ifconfig 出错：" + r.stderr);
     return;
   }
 
   if (r.stdout.indexOf("192.168") !== -1) {
     // 网络正常
-    appendFileSync(resultLog, format("ok"));
+    log(resultLog, "ok");
     return;
   }
 
@@ -33,10 +33,10 @@ function format(str: string) {
 
   if (r.code !== 0) {
     //  重启出错
-    appendFileSync(errorLog, format("重启出错：" + r.stderr));
+    log(errorLog, "重启出错：" + r.stderr);
     return;
   }
 
   // 重启成功
-  appendFileSync(resultLog, "重启成功");
+  log(resultLog, "重启成功");
 })();
